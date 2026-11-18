@@ -1,11 +1,10 @@
 1.0.1 2026-11-18
-  - dataset_description.json: License written as SPDX "CC0-1.0"
-  - dataset_description.json ReferencesAndLinks, HowToAcknowledge -> data descriptor doi:10.1038/s41597-026-08125-y (its Data Availability section names doi:10.18112/openneuro.ds007554.v1.0.0)
-  - channels.tsv: unique channel names from the SNIRF measurement list (both wavelengths of a channel had the same name)
-  - *_nirs.json SamplingFrequency 10 -> 50 in 179 recordings whose SNIRF time axis gives 50 Hz (doi:10.1038/s41597-026-08125-y, Usage Notes: sub-021 to sub-030 recorded at 50 Hz)
-  - *_coordsystem.json and *_optodes.tsv added from the SNIRF /nirs/probe
-  - *_nirs.json RecordingType -> continuous-wave recordings with a regular SNIRF time vector
-  - README.md "Known issues" -> SNIRF metaDataTags LengthUnit/TimeUnit and /nirs/probe of the named files; the channels.tsv and nirs.json files; doi:10.1038/s41597-026-08125-y, Methods "Data acquisition" and Usage Notes
-  - Not in this text change (data files): SNIRF LengthUnit mm -> cm
+  - 519 sub-*/ses-*/nirs/*_channels.tsv: unique names S<source>_D<detector> <wavelength> from the SNIRF measurement list; wavelength_nominal written as a decimal (760.0, 850.0); column status added (good)
+  - 179 *_nirs.json: SamplingFrequency 10 -> 50 where the SNIRF time axis gives 50 Hz (doi:10.1038/s41597-026-08125-y, Usage Notes); 519 *_nirs.json: RecordingType "continuous" added
+  - 87 *_optodes.tsv and 87 *_coordsystem.json added from SNIRF /nirs/probe; NIRSCoordinateUnits cm (see README.md); NIRSCoordinateSystem Other, with a description
+  - dataset_description.json: ReferencesAndLinks and HowToAcknowledge added (data descriptor doi:10.1038/s41597-026-08125-y, whose Data Availability section names this record)
+  - sourcedata/: the published versions of the 519 tables and 179 JSON sidecars whose values change in this version, byte-identical at the same relative path
+  - README.md: new section "Contributed notes (version 1.0.1)"
+  - dataset_description.json: Version 1.0.0 -> 1.0.1
 1.0.0 2026-03-23
   - initial upload

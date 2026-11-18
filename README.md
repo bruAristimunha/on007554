@@ -96,18 +96,8 @@ Subjective ratings:
 - Karolinska Sleepiness Scale (KSS) before each session  
 - Mental load ratings after each task (9-point Likert and visual analogue scale)
 
-## Known issues
+## Contributed notes (version 1.0.1)
 
-Checked in the files of version 1.0.0; the source of each item is given with it.
-
-- Optode position unit: the SNIRF files state `LengthUnit` mm (`/nirs/metaDataTags/LengthUnit`), but the probe
-  positions are not millimetres: in `sub-001/ses-01/nirs/sub-001_ses-01_task-activemotor_nirs.snirf` and
-  `..._task-full_nirs.snirf` the median source-detector distance is 4.06 in file units, while the data descriptor
-  gives inter-optode distances of 35 mm (prefrontal Octamon) and 30 mm (sensorimotor Octamon+)
-  (doi:10.1038/s41597-026-08125-y, Methods, "Data acquisition", fNIRS system). The values are consistent with centimetres.
-- All 522 `*_channels.tsv` files give both wavelengths of a channel the same name (Ch1, Ch1, ...); mne_bids refuses
-  duplicate channel names (source: the channels.tsv files of this dataset).
-- Time unit: the SNIRF files declare the time unit 'unknown' (`/nirs/metaDataTags/TimeUnit`, e.g. in the two files
-  named above, whose time axis read as seconds gives 9.9999 Hz). The data descriptor states that sub-001 to sub-020
-  were recorded at 10 Hz and sub-021 to sub-030 at 50 Hz, and that the shared .snirf files keep these rates
-  (doi:10.1038/s41597-026-08125-y, Usage Notes, "Sampling differences in fNIRS"); all 519 `*_nirs.json` files state SamplingFrequency 10.
+- Optode position unit: the SNIRF files state LengthUnit mm, but the probe positions are not millimetres: the median source-detector distance is 4.06 file units, while the data descriptor gives inter-optode distances of 30 and 35 mm (doi:10.1038/s41597-026-08125-y, Methods, Data acquisition). The values are consistent with centimetres, so the optodes.tsv files added in version 1.0.1 declare cm.
+- Time unit: the SNIRF files declare the time unit "unknown". Read as seconds, the time axes give 10 Hz for sub-001 to sub-020 and 50 Hz for sub-021 to sub-030, the rates stated in the data descriptor (Usage Notes); from version 1.0.1 SamplingFrequency in nirs.json follows these rates.
+- Three channels.tsv files have no matching recording and keep their published duplicate names: sub-001 ses-03 task-full, sub-003 ses-01 task-nback and sub-006 ses-03 task-motorimagery.
